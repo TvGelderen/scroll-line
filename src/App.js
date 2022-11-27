@@ -1,13 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-
-const svgVariants = {
-
-}
-
-const pathVariants = {
-
-}
 
 function App() {
   let path = document.querySelector('path')
