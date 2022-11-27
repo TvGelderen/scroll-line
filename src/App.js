@@ -1,10 +1,36 @@
+import React from 'react'
+import { motion } from 'framer-motion'
+
+const svgVariants = {
+
+}
+
+const pathVariants = {
+
+}
 
 function App() {
+  let path = document.querySelector('path')
+  let pathLength = path.getTotalLength()
+
+  path.style.strokeDasharray = pathLength + ' ' + pathLength
+  path.style.strokeDashoffset = pathLength
+
+  window.addEventListener('scroll', () => {
+    let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
+
+    let drawLength = pathLength * scrollPercentage
+
+    path.style.strokeDashoffset = pathLength - drawLength
+  })
+
   return (
     <div>
-      <svg width="911" height="6033" viewBox="0 0 911 6033" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M445 0V1315C445 1467 470.5 1646.5 698 1503.5C788 1402.17 902.8 1222.6 642 1315C316 1430.5 235 1540 260 1613C285 1686 445 1747.5 445 1818C445 1874.4 445 2094.5 445 2197.5V2414V2666.5C452.667 2838 426.4 3137.7 260 2964.5C93.6 2791.3 218.667 2789.33 302 2810C507 2835.17 886.7 2901.3 765.5 2964.5C614 3043.5 445 3094 445 3195C445 3275.8 445 3485.33 445 3580V4032.5V4316C449 4471.67 512 4726.2 732 4499C952 4271.8 728 4353.67 588.5 4423C500.5 4473.5 333.5 4591.4 369.5 4659C414.5 4743.5 445 4799.5 445 4909C445 4996.6 445 5509.5 445 5755M445 5755C482.5 5863.5 580 6069.3 670 6024.5C760 5979.7 718.833 5880.5 687 5836.5C512.667 5638.83 173.6 5362.1 212 5836.5C260 6429.5 1170.5 5392.5 746 5547C321.5 5701.5 -316.5 5794.5 299 5876C914.5 5957.5 1100 5639.5 687 5684.5C274 5729.5 -192.5 5938 88.5001 5949C313.3 5957.8 419.833 5823.33 445 5755Z" stroke="#FF0000" stroke-width="4"/>
-      </svg>
+      <div className='line-container'>
+        <svg width="1142" height="6057" viewBox="0 0 1142 6057" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M858 2.5C948.667 115.333 1066.7 373.1 813.5 501.5C560.3 629.9 357.333 864.333 287.5 965.5C179.166 1102.17 12.4 1404.9 212 1522.5C461.5 1669.5 1134.5 1639 1139 1754.5C1142.6 1846.9 896.834 1926.67 773.5 1955C531.334 1999.33 80 2128.2 212 2289C377 2490 804.5 2382.5 773.5 2570C742.5 2757.5 181 2561.5 60.4999 2860C-60.0001 3158.5 42.7957 3500.76 60.4999 3537.5C127 3675.5 894 3385.5 773.5 3675.5C739.5 3786.83 633.1 4015.8 479.5 4041C287.5 4072.5 131.5 4125.5 287.5 4241.5C443.5 4357.5 515 4331 613 4415.5C711 4500 1036.5 4794 934 4923.5C831.5 5053 564 5080 613 5334C662 5588 769 5588.5 813.5 5650.5C849.1 5700.1 786.667 5941.5 751 6056" stroke="#FF0000" stroke-width="5"/>
+        </svg>
+      </div>
     </div>
   );
 }
